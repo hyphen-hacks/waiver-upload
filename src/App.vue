@@ -15,7 +15,7 @@
     name: 'appContainer',
     data() {
       return {
-        apiUrl: 'http://104.248.214.247/api/v1/',
+        apiUrl: 'https://api.hyphen-hacks.stomprocket.io/api/v1/',
         person: {}
       }
     },
