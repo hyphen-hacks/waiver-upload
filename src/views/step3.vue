@@ -2,7 +2,8 @@
   <div class="home page">
     <button @click="back" class="back">BACK</button>
     <h1>3. UPLOAD IT</h1>
-    <p>Take a photo of the signed waiver and upload it. You only need to upload the last page. Make sure there is good lighting and that the signature is
+    <p>Take a photo of the signed waiver and upload it. You only need to upload the last page. Make sure there is good
+      lighting and that the signature is
       legible. We will email you once your waiver is approved.</p>
     <form v-if="isInitial" :class="{hover: hovering}" enctype="multipart/form-data" novalidate class="uploader">
       <input @dragover="hovering = true" @dragenter="hovering = true" @dragleave="hovering = false"
@@ -56,31 +57,40 @@
       fileChange(e) {
         console.log(e.target.files[0], e.target.name, e.target.files)
         if (e.target.files.length === 1) {
-          if (e.target.files[0].size/1024/1024 <= 10) {
-            this.error = false
-            this.uploading = true;
-            this.isInitial = false;
-            this.$firebase.storage().ref('waivers/' + this.$route.params.id).put(e.target.files[0]).then(snap => {
-              this.$firebase.firestore().collection('people').doc(this.id).get().then(person => {
-                person = person.data()
-                person.waiverStatus = 1;
-                person.waiverImage = 'waivers/' + this.$route.params.id
-                person.waiverUploaded = Date.now()
-                this.$firebase.firestore().collection('people').doc(this.id).set(person).then(()=> {
-                  this.$router.push('/success/'+ this.id)
+          if (e.target.files[0].type.substring(0, 6) === "image/" || e.target.files[0].type === "application/pdf") {
+            if (e.target.files[0].size / 1024 / 1024 <= 10) {
+              this.error = false
+              this.uploading = true;
+              this.isInitial = false;
+
+              this.$firebase.storage().ref('waivers/' + this.$route.params.id).put(e.target.files[0]).then(snap => {
+                this.$firebase.firestore().collection('people').doc(this.id).get().then(person => {
+                  person = person.data()
+                  person.waiverStatus = 1;
+                  person.waiverImage = 'waivers/' + this.$route.params.id
+                  person.waiverUploaded = Date.now()
+                  this.$firebase.firestore().collection('people').doc(this.id).set(person).then(() => {
+                    this.$router.push('/success/' + this.id)
+                  })
                 })
+              }).catch(e => {
+                console.log(e)
+                this.error = 'Uh Oh! Error While Uploading' + e.message
+                this.uploading = false;
+                this.isInitial = true;
               })
-            }).catch(e => {
-              console.log(e)
-              this.error = 'Uh Oh! Error While Uploading' + e.message
+
+            } else {
+              this.error = 'Please make sure file is smaller than 10mb'
               this.uploading = false;
               this.isInitial = true;
-            })
+            }
           } else {
-            this.error = 'Please make sure file is smaller than 10mb'
+            this.error = 'Please make sure file is an image or PDF'
             this.uploading = false;
             this.isInitial = true;
           }
+
           /*
 
           */
