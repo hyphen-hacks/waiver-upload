@@ -15,7 +15,7 @@
     name: 'appContainer',
     data() {
       return {
-        apiUrl: 'http://localhost:3000/api/v1/',
+        apiUrl: '104.248.214.247',
         person: {}
       }
     },
