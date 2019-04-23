@@ -30,7 +30,7 @@
       download() {
         let element = document.createElement('a');
         element.setAttribute('href', this.url);
-        element.setAttribute('download', 'waiver');
+        element.setAttribute('download', 'waiver.pdf');
         element.setAttribute('target', '_blank');
         element.style.display = 'none';
         document.body.appendChild(element);
