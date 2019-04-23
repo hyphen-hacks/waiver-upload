@@ -1,18 +1,45 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home page">
+    <h1>3 EASY STEPS</h1>
+    <p>Just three easy steps to complete your registration into one of the most diverse and welcoming hackathons in the
+      Bay Area.</p>
+    <ol>
+      <li>Download The Waiver</li>
+      <li>Sign It</li>
+      <li>Upload It!</li>
+    </ol>
+    <button @click="download">DOWNLOAD WAIVER</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'home',
+    data() {
+      return {
+        url: ''
+      }
+    },
+    mounted() {
+      this.$firebase.firestore().collection('publicRefs').doc('downloads').get().then(e => {
+        this.url = e.data().waiver
+      })
+    },
+    methods: {
+      download() {
+        let element = document.createElement('a');
+        element.setAttribute('href', this.url);
+        element.setAttribute('download', 'waiver');
+        element.setAttribute('target', '_blank');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+        this.$router.push('/step2/' + this.$route.params.id)
+      }
+    }
   }
-}
 </script>

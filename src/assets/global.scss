@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css?family=Chivo:300,700|Space+Mono:700');
+
+$yellow: #DC8F2A;
+$yellow--dark: #b87327;
+$blue: #34495E;
+$link: #2A83DC;
+$grey: #EFEFEF;
+$grey--dark: #cdcdcd;
+
+body, #app {
+  background: $blue;
+  height: 100vh;
+  font-family: 'Chivo', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  transition-duration: 0.5s;
+
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav {
+  justify-self: flex-start;
+  margin-bottom: auto;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+
+  img {
+    height: 5vh;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 1%;
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+.page {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: white;
+  margin-bottom: auto;
+  width: 40vw;
+  height: 50vw;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: 768px) {
+    width: 90vw;
+    height: 80vh;
+
+  }
+
+  h1 {
+    font-family: 'Space Mono', monospace;
+    border-bottom: $yellow 20px solid;
+    font-size: 3rem;
+    text-align: center;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    @media only screen and (max-width: 375px) {
+      font-size: 2rem;
+      border-bottom: $yellow 10px solid;
+    }
+  }
+
+  p {
+    font-weight: 300;
+    text-align: center;
+    font-family: chivo, sans-serif;
+    margin: auto;
+    max-width: 70%;
+
+  }
+
+  ol {
+    align-self: center;
+    font-size: 1rem;
+    counter-reset: custom-counter;
+    margin-left: 0; /* Remove the default left margin */
+    padding-left: 0;
+    display: inline-block;
+    width: 13rem;
+
+
+    li {
+      font-weight: 400;
+      font-size: 1rem;
+      list-style: none;
+      height: 4rem;
+      line-height: 2.5rem;
+      display: flex;
+      align-content: center;
+
+    }
+
+    li:before {
+      font-family: "Space Mono", monospace;
+      font-size: 2.5rem;
+      margin-right: 5%;
+      content: counter(custom-counter);
+      counter-increment: custom-counter;
+    }
+  }
+
+  button, .button {
+    transition-duration: 0.5s;
+    display: block;
+    background: $yellow;
+
+    width: 50%;
+    margin: auto auto 0 auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    padding: 2%;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: chivo, sans-serif;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      background-color: $yellow--dark;
+    }
+  }
+
+  .back {
+    position: relative;
+    top: -2vw;
+    left: -2vw;
+    width: 5rem;
+    margin: 0 auto 0 0;
+    font-weight: 300;
+    font-size: 0.7rem;
+    @media only screen and (max-width: 768px) {
+      top: -1vw;
+      left: -1vw;
+
+    }
+  }
+
+  img {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a {
+    color: $link;
+    text-decoration: underline;
+  }
+
+  .uploader.hover {
+    background: $grey--dark;
+  }
+
+  .uploading {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25vw;
+    height: 20vh;
+    background: $grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    p {
+      margin-top: 2%;
+    }
+
+    p.error {
+      color: red !important;
+      margin: auto auto 2% auto;
+    }
+
+    a.error {
+      margin-bottom: auto;
+    }
+
+  }
+
+  .sk-cube-grid {
+    width: 40px;
+    height: 40px;
+    margin-top: auto;
+  }
+
+  .sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: $yellow;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  }
+
+  .sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+  }
+
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+  }
+
+  .sk-cube-grid .sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+
+  @-webkit-keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+      transform: scale3D(1, 1, 1);
+    }
+    35% {
+      -webkit-transform: scale3D(0, 0, 1);
+      transform: scale3D(0, 0, 1);
+    }
+  }
+
+  @keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+      transform: scale3D(1, 1, 1);
+    }
+    35% {
+      -webkit-transform: scale3D(0, 0, 1);
+      transform: scale3D(0, 0, 1);
+    }
+  }
+
+  .uploader {
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -ms-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25vw;
+    height: 20vh;
+    background: $grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    p.errorUpload {
+      margin: auto auto 2% auto;
+    }
+
+    p.error {
+      color: red !important;
+      margin: 2% auto 2% auto;
+    }
+
+    a.error {
+      margin-bottom: auto;
+    }
+
+    &:hover {
+      background: $grey--dark;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      width: 25vw;
+      height: 20vh;
+    }
+
+    p {
+
+      span {
+        color: $link;
+        text-decoration: underline;
+      }
+    }
+  }
+}

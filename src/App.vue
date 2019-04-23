@@ -1,29 +1,66 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <img src="@/assets/logo.svg" alt="">
+      <a href="https://hyphen-hacks.com">Hyphen-Hacks</a>
     </div>
     <router-view/>
   </div>
 </template>
+<script>
+  import 'minireset.css'
+  import '@/assets/global.scss'
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+  export default {
+    name: 'appContainer',
+    data() {
+      return {
+        apiUrl: 'http://localhost:3000/api/v1/',
+        person: {}
+      }
+    },
+    watch: {
+      $route(to, from) {
+        this.check()
+      }
+    },
+    mounted() {
+      this.check()
+    },
+    methods: {
+      check() {
+
+        //console.log(this.$route.params.id, this.$route.path)
+        fetch(this.apiUrl + 'checkPersonStatus', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: this.$route.params.id
+          })
+        }).then((resp) => resp.json()).then(result => {
+          // console.log(result)
+          if (result.person) {
+            this.person = result.person
+            if (result.person.waiverStatus != 0 && this.$route.name != "waiver status" && this.$route.name != "success") {
+              console.log('status', this.$route.name)
+              this.$router.push('/waiverstatus/' + this.$route.params.id)
+
+            } else {
+              //console.log('good person')
+            }
+
+
+          } else {
+            // console.log('no person')
+            this.$router.push('/uhoh/')
+          }
+        }).catch(e => {
+          console.error(e)
+        })
+
+      }
     }
   }
-}
-</style>
+</script>
