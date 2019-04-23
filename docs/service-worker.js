@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.d11d7650ff872d97fa631efc054b051d.js"
+  "precache-manifest.dac93aed3cdcee6d627e868fbcd3e8ed.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "waiver-upload"});
