@@ -88,6 +88,13 @@ body, #app {
     margin: auto;
     max-width: 70%;
 
+    @media only screen and (max-width: 768px) {
+
+      max-width: 90%;
+
+
+    }
+
   }
 
   ol {
@@ -125,6 +132,13 @@ body, #app {
     display: block;
     background: $yellow;
 
+    @media only screen and (max-width: 768px) {
+
+      width: 60%;
+      padding: 4%;
+
+
+    }
     width: 50%;
     margin: auto auto 0 auto;
     -webkit-border-radius: 5px;
@@ -155,6 +169,7 @@ body, #app {
     @media only screen and (max-width: 768px) {
       top: -1vw;
       left: -1vw;
+      padding: 2%;
 
     }
   }
@@ -174,7 +189,15 @@ body, #app {
     background: $grey--dark;
   }
 
+
   .uploading {
+
+    @media only screen and (max-width: 768px) {
+
+      width: 70vw;
+
+
+    }
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -ms-transition-duration: 0.5s;
@@ -291,6 +314,13 @@ body, #app {
   }
 
   .uploader {
+
+    @media only screen and (max-width: 768px) {
+
+      width: 70vw;
+
+
+    }
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -ms-transition-duration: 0.5s;
