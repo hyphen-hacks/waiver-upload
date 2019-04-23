@@ -15,7 +15,7 @@
     name: 'appContainer',
     data() {
       return {
-        apiUrl: '104.248.214.247',
+        apiUrl: 'http://104.248.214.247/api/v1/',
         person: {}
       }
     },
@@ -40,11 +40,11 @@
             id: this.$route.params.id
           })
         }).then((resp) => resp.json()).then(result => {
-          // console.log(result)
+           console.log(result)
           if (result.person) {
             this.person = result.person
             if (result.person.waiverStatus != 0 && this.$route.name != "waiver status" && this.$route.name != "success") {
-              console.log('status', this.$route.name)
+            //  console.log('status', this.$route.name)
               this.$router.push('/waiverstatus/' + this.$route.params.id)
 
             } else {
@@ -53,7 +53,7 @@
 
 
           } else {
-            // console.log('no person')
+           //  console.log('no person')
             this.$router.push('/uhoh/')
           }
         }).catch(e => {
