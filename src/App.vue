@@ -15,7 +15,7 @@
     name: 'appContainer',
     data() {
       return {
-        apiUrl: 'https://api.hyphen-hacks.stomprocket.io/api/v1/',
+        apiUrl: 'https://api.hyphen-hacks.com/api/v1/',
         person: {}
       }
     },
@@ -44,8 +44,11 @@
           if (result.person) {
             this.person = result.person
             if (result.person.waiverStatus != 0 && this.$route.name != "waiver status" && this.$route.name != "success") {
+              if (!result.person.waiverStatus == 3) {
+                this.$router.push('/waiverstatus/' + this.$route.params.id)
+              }
             //  console.log('status', this.$route.name)
-              this.$router.push('/waiverstatus/' + this.$route.params.id)
+
 
             } else {
               //console.log('good person')
