@@ -5,7 +5,7 @@
       <span class="waiverStatus">{{waiverStatus}}</span></p>
 
 
-    <a class="button" href="mailto:hyphenhackslw@gmail.com">CONTACT SUPPORT</a>
+    <a class="button" href="mailto:support@hyphen-hacks.com">CONTACT SUPPORT</a>
   </div>
 </template>
 
