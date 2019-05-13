@@ -8,7 +8,7 @@
       <li>Sign It</li>
       <li>Upload It!</li>
     </ol>
-    <button :disabled="!url" @click="download">DOWNLOAD WAIVER</button>
+    <button  @click="download">DOWNLOAD WAIVER</button>
   </div>
 </template>
 
@@ -26,8 +26,9 @@
     },
     methods: {
       download() {
+        console.log('downloading')
         let element = document.createElement('a');
-        element.setAttribute('href', this.url);
+        element.setAttribute('href', this.$parent.person.waiverDownloadURL);
         element.setAttribute('download', 'waiver.pdf');
         element.setAttribute('target', '_blank');
         element.style.display = 'none';

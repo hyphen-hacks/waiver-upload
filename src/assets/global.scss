@@ -6,6 +6,7 @@ $blue: #34495E;
 $link: #2A83DC;
 $grey: #EFEFEF;
 $grey--dark: #cdcdcd;
+$yellow--light: #fba52f;
 
 body, #app {
   background: $blue;
@@ -124,6 +125,14 @@ body, #app {
       margin-right: 5%;
       content: counter(custom-counter);
       counter-increment: custom-counter;
+    }
+  }
+
+  button[disabled] {
+    background: $grey--dark;
+
+    &:hover {
+      background: $grey--dark;
     }
   }
 
