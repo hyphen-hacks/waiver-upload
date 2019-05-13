@@ -1,8 +1,9 @@
 <template>
   <div class="home page">
     <h1>Waiver Status</h1>
-    <p>You can check the status of you waiver here. You will get an email when the status changes. <br> <br> Waiver Status:
-      <span class="waiverStatus">{{waiverStatus}}</span></p>
+    <p v-if="waiverStatusID === 2">Congratulations! Your waiver was accepted. You will get an email in the upcoming months letting you know if you are accepted into Hyphen-Hacks. If you have any questions or comments please email us: <a href="mailto:support@hyphen-hacks.com">support@hyphen-hacks.com</a></p>
+    <p v-if="waiverStatusID === 1">Thank you for submitting your waiver! We will email you once our team reviews it. If you have any questions or comments please email us: <a href="mailto:support@hyphen-hacks.com">support@hyphen-hacks.com</a></p>
+    <p v-if="waiverStatusID === 3">Uh oh, it looks like your waiver was declined. Please check your email for more information about how to resubmit. If you have any questions or comments please email us: <a href="mailto:support@hyphen-hacks.com">support@hyphen-hacks.com</a></p>
 
 
     <a class="button" href="mailto:support@hyphen-hacks.com">CONTACT SUPPORT</a>

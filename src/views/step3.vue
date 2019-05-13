@@ -55,7 +55,7 @@
     },
     methods: {
       fileChange(e) {
-        console.log(e.target.files[0], e.target.name, e.target.files)
+      //  console.log(e.target.files[0], e.target.name, e.target.files)
         if (e.target.files.length === 1) {
           if (e.target.files[0].type.substring(0, 6) === "image/" || e.target.files[0].type === "application/pdf") {
             if (e.target.files[0].size / 1024 / 1024 <= 10) {

@@ -8,7 +8,7 @@
       <li>Sign It</li>
       <li>Upload It!</li>
     </ol>
-    <button @click="download">DOWNLOAD WAIVER</button>
+    <button :disabled="!url" @click="download">DOWNLOAD WAIVER</button>
   </div>
 </template>
 
@@ -18,13 +18,11 @@
     name: 'home',
     data() {
       return {
-        url: ''
+        url: this.$parent.person.waiverDownloadURL
       }
     },
     mounted() {
-      this.$firebase.firestore().collection('publicRefs').doc('downloads').get().then(e => {
-        this.url = e.data().waiver
-      })
+
     },
     methods: {
       download() {

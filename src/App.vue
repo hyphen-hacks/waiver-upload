@@ -40,11 +40,14 @@
             id: this.$route.params.id
           })
         }).then((resp) => resp.json()).then(result => {
-           console.log(result)
+          // console.log(result, 'person route check')
           if (result.person) {
+          //  console.log('there is a person')
             this.person = result.person
             if (result.person.waiverStatus != 0 && this.$route.name != "waiver status" && this.$route.name != "success") {
-              if (!result.person.waiverStatus == 3) {
+             //console.log('first check')
+              if (result.person.waiverStatus != 3) {
+               // console.log('redirecting')
                 this.$router.push('/waiverstatus/' + this.$route.params.id)
               }
             //  console.log('status', this.$route.name)
