@@ -55,24 +55,38 @@
     },
     methods: {
       fileChange(e) {
-      //  console.log(e.target.files[0], e.target.name, e.target.files)
+        //  console.log(e.target.files[0], e.target.name, e.target.files)
         if (e.target.files.length === 1) {
           if (e.target.files[0].type.substring(0, 6) === "image/" || e.target.files[0].type === "application/pdf") {
             if (e.target.files[0].size / 1024 / 1024 <= 10) {
               this.error = false
               this.uploading = true;
               this.isInitial = false;
-
+              console.log(e.target.files[0], e.target.name, 'uploading')
               this.$firebase.storage().ref('waivers/' + this.$route.params.id).put(e.target.files[0]).then(snap => {
-                this.$firebase.firestore().collection('people').doc(this.id).get().then(person => {
-                  person = person.data()
-                  person.waiverStatus = 1;
-                  person.waiverImage = 'waivers/' + this.$route.params.id
-                  person.waiverUploaded = Date.now()
-                  this.$firebase.firestore().collection('people').doc(this.id).set(person).then(() => {
-                    this.$router.push('/success/' + this.id)
+                console.log(snap)
+                fetch('https://api.hyphen-hacks.com/api/v1/waiveruploaded', {
+                  method: 'post',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    waiverStatus: 1,
+                    waiverImage: 'waivers/' + this.$route.params.id,
+                    waiverUploaded: Date.now(),
+                    id: this.$route.params.id
                   })
+                }).then(resp => resp.json()).then(resp => {
+                  if (resp.success) {
+                    this.$router.push('/success/' + this.id)
+                  } else {
+                    this.error = 'Uh Oh! Error While Sending Data To Server' + this.error.message
+                    this.uploading = false;
+                    this.isInitial = true;
+                  }
                 })
+              
               }).catch(e => {
                 console.log(e)
                 this.error = 'Uh Oh! Error While Uploading' + e.message
