@@ -70,11 +70,13 @@ body, #app {
 
   h1 {
     font-family: 'Space Mono', monospace;
-    //border-bottom: $yellow 20px solid;
-    background-image: linear-gradient($yellow, $yellow);
-    background-size: 100% 25%;
-    background-repeat: no-repeat;
-    background-position: left bottom;
+
+    span {
+      background-image: linear-gradient(#dc8f2a, #dc8f2a);
+      background-size: 100% 25%;
+      background-repeat: no-repeat;
+      background-position: left bottom;
+    }
     font-size: 3rem;
     text-align: center;
     display: inline-block;

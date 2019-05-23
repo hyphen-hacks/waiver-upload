@@ -1,7 +1,7 @@
 <template>
   <div class="home page">
     <button @click="back" class="back">BACK</button>
-    <h1>3. UPLOAD IT</h1>
+    <h1><span>3. UPLOAD IT</span></h1>
     <p>Take a photo of the signed waiver and upload it. You only need to upload the last page. Make sure there is good
       lighting and that the signature is
       legible. We will email you once your waiver is approved.</p>

@@ -1,6 +1,6 @@
 <template>
   <div class="home page">
-    <h1>3 EASY STEPS</h1>
+    <h1><span>3 EASY STEPS</span></h1>
     <p>Just three easy steps to complete your registration into one of the most diverse and welcoming hackathons in the
       Bay Area.</p>
     <ol>

@@ -1,6 +1,6 @@
 <template>
   <div class="home page">
-    <h1>Uh Oh!</h1>
+    <h1><span>Uh Oh!</span></h1>
 
     <p>Uh Oh! It looks like this waiver link is invalid. Please check your email to get your unique link to upload your waiver.</p>
 
