@@ -28,7 +28,7 @@
       download() {
         console.log('downloading')
         let element = document.createElement('a');
-        element.setAttribute('href', this.$parent.person.waiverDownloadURL);
+        element.setAttribute('href', 'https://firebasestorage.googleapis.com/v0/b/hyphen-hacks-2019.appspot.com/o/public%2FHyphen-Hacks%20Release%20-%20Oct%2012%20-%2013%202019.pdf?alt=media&token=d461f216-7b30-4693-9af7-44c53af24b09');
         element.setAttribute('download', 'waiver.pdf');
         element.setAttribute('target', '_blank');
         element.style.display = 'none';
