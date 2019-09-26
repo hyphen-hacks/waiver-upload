@@ -10,7 +10,7 @@
              @dragend="hovering = false" @drop="hovering = false" type="file" name="uploader" :disabled="!isInitial"
              :value="file"
              @change="fileChange($event)"
-             accept="image/*">
+             accept="image/*,application/pdf">
       <p v-if="isInitial" :class="{errorUpload: error}"><span>Add</span> or drag the waiver here</p>
       <p v-if="error" class="error">{{error}}</p>
       <a v-if="error" class="error">Contact Support</a>
